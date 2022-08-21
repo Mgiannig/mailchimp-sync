@@ -1,0 +1,17 @@
+{
+  "name": "mailchimp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.78",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "md5": "^2.3.0"
+  }
+}
