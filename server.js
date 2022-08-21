@@ -1,4 +1,3 @@
-const mailchimp = require("@mailchimp/mailchimp_marketing");
 require("dotenv").config();
 const { bulkAddMembers } = require("./mailchimp");
 const { getContactsToImport } = require("./fakeapi");
@@ -6,14 +5,6 @@ const { getContactsToImport } = require("./fakeapi");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
-});
 
 app.get("/contacts/sync", execute);
 
@@ -63,3 +54,13 @@ async function execute(req, res) {
     });
   }
 }
+
+app.get("/", (req, res) => {
+  res.send(
+    "Hello World!! please check the contacts/sync endpoint for the result"
+  );
+});
+
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`);
+});
