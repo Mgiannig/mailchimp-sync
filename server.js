@@ -2,18 +2,28 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 require("dotenv").config();
 const { bulkAddMembers } = require("./mailchimp");
 const { getContactsToImport } = require("./fakeapi");
-mailchimp.setConfig({
-  apiKey: "75780780bb7830154094da3cf3ed7b4f-us8",
-  server: "us8",
+
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
-async function execute() {
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`);
+});
+
+app.get("/contacts/sync", execute);
+
+async function execute(req, res) {
   try {
     //get contacts from the fake api
-    const membersToAdd = await getContactsToImport();
+    const apiContacts = await getContactsToImport();
 
     //we parse the info to what the mailchimp API requires
-    const mailChimpPayload = membersToAdd.map((x) => {
+    const mailChimpPayload = apiContacts.map((x) => {
       return {
         email_address: x.email,
         status: "subscribed",
@@ -24,6 +34,7 @@ async function execute() {
       };
     });
 
+    //bulk insert or update operation to mailchimp api
     const bulkUpdateOperation = await bulkAddMembers(mailChimpPayload);
     const syncedContacts =
       bulkUpdateOperation.total_created + bulkUpdateOperation.total_updated;
@@ -40,15 +51,15 @@ async function execute() {
       };
     });
 
-    const response = {
+    res.send({
       syncedContacts,
       contacts,
-    };
-
-    console.log(response);
+    });
   } catch (e) {
     console.log(e);
+    res.status(500).send({
+      msg: "We've encountered an error while processing your request. Please try again later",
+      error: error,
+    });
   }
 }
-
-execute();
