@@ -41,16 +41,18 @@ async function execute(req, res) {
         email: m.email_address,
       };
     });
-
-    res.send({
+    const response = {
       syncedContacts,
       contacts,
-    });
-  } catch (e) {
-    console.log(e);
+    };
+
+    res.send(response);
+    console.log("Success: synced: ", response);
+  } catch (error) {
+    console.log(error);
     res.status(500).send({
       msg: "We've encountered an error while processing your request. Please try again later",
-      error: error,
+      error,
     });
   }
 }
