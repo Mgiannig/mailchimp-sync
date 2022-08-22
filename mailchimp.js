@@ -1,8 +1,8 @@
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const listId = process.env.LIST_ID;
 mailchimp.setConfig({
-  apiKey: "75780780bb7830154094da3cf3ed7b4f-us8",
-  server: "us8",
+  apiKey: process.env.API_KEY,
+  server: process.env.SERVER_REGION,
 });
 
 exports.bulkAddMembers = async function (members) {
