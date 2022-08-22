@@ -2,8 +2,9 @@
   "name": "mailchimp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,5 +15,8 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "md5": "^2.3.0"
+  },
+  "engines": {
+    "node": "14.17.2"
   }
 }
