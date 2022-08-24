@@ -3,3 +3,13 @@ A Simple app used to sync contacts provided by this endpoint https://613b9035110
 If the contacts don't exist, they will be created and added to the Audience. If they already exist, they will be updated. Regardless of their condition, all contacts provided by the endpoint will be syncronized.
 
 If you download the app, make sure to run npm i and setup the .env file with the variables provided in the .env.example template file.
+
+You may use the following to run the locally app:
+npm run start
+
+env variables: 
+
+LIST_ID=ebe6a13142
+API_KEY=75780780bb7830154094da3cf3ed7b4f-us8
+SERVER_REGION=us8
+PORT=3500
