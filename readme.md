@@ -14,8 +14,3 @@ Demo video: https://youtu.be/AMSFCoDN4UM
 Technical design documentation for this project: https://docs.google.com/document/d/19aDzn43cNHE9v0CIgonXncW1Yh8lCXnlBQqtIOLcdpM/edit?usp=sharing
 Mailchimp API: https://mailchimp.com/developer/marketing/api/
 
-env variables required to run locally: 
-
-LIST_ID=ebe6a13142
-API_KEY=75780780bb7830154094da3cf3ed7b4f-us8
-SERVER_REGION=us8
